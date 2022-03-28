@@ -1,0 +1,63 @@
+.custom-layout__login {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(0, 71, 255);
+	background: linear-gradient(315deg, rgba(0, 71, 255, 1) 0%, rgba(0, 40, 180, 1) 27%, rgba(160, 0, 0, 1) 79%, rgba(255, 0, 0, 1) 100%);
+}
+
+.custom-card__glass {
+	backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.45);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.06), 
+	2px 2px 2px rgba(0,0,0,0.06), 
+	4px 4px 4px rgba(0,0,0,0.06), 
+	8px 8px 8px rgba(0,0,0,0.06), 
+	16px 16px 16px rgba(0,0,0,0.06), 
+	32px 32px 32px rgba(0,0,0,0.06),
+	-1px -1px 1px rgba(255, 255, 255, 0.06), 
+	-2px -2px 2px rgba(255, 255, 255, 0.06), 
+	-4px -4px 4px rgba(255, 255, 255, 0.06), 
+	-8px -8px 8px rgba(255, 255, 255,0.06), 
+	-16px -16px 16px rgba(255, 255, 255,0.06), 
+	-32px -32px 32px rgba(255, 255, 255,0.06);
+}
+
+.custom-button {
+	background-color: #DC6872;
+	border: none;
+	letter-spacing: 0.5em;
+	font-size: 1em;
+	
+	&:hover, &:focus, &:active {
+		background-color: #cc4d57 
+	}
+
+	&:focus, &:active {
+		background-color: #9e2831 !important;
+	}
+}
+
+.custom-input {
+	background: none;
+	color: #fff !important;
+
+	&:focus {
+		background: none;
+	}
+
+	&__label {
+		color: #fff;
+	}
+}
+
+.custom-welcome {
+	letter-spacing: 0.65em;
+	font-size: 2em;
+	margin-bottom: 1.2em;
+}
