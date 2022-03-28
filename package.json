@@ -7,8 +7,8 @@
     "prod": "npm run production",
     "production": "mix --production",
     "watch": "mix watch",
-    "watch-poll": "mix watch -- --watch-options-poll=1000",
-    "postinstall": "npm run prod"
+    "watch-poll": "mix watch -- --watch-options-poll=1000"
+
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
