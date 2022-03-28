@@ -59,10 +59,10 @@ class TaskController extends Controller
         } else {
            $task = Task::create($validated->validated());
 
-            UserHasTask::create([
-                'user_id' => Auth::id(),
-                'task_id' => $task->id
-            ]);
+            // UserHasTask::create([
+            //     'user_id' => Auth::id(),
+            //     'task_id' => $task->id
+            // ]);
             $response = [
                 'status' => 'true',
                 'data' => [],

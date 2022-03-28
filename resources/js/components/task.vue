@@ -29,7 +29,7 @@ export default{
 				if(response.data.status == 'true'){
 					this.errMsg = null;
 				}else{
-					// this.errMsg = response.data.errors.isCompleted[0];
+					this.errMsg = response.data.errors.isCompleted[0];
 				}
 			})
 			.catch( error => {
