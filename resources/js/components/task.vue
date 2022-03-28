@@ -1,7 +1,7 @@
 <template>
 	<div class="task">
 		<input type="checkbox" class="task-check" @change="updateTask()" v-model="task.isCompleted"/>
-		<span :class="[task.isCompleted ? 'completed' : '', 'task-text']">{{ task.task[0].title}}</span>
+		<span :class="[task.isCompleted ? 'completed' : '', 'task-text']">{{ task.title}}</span>
 		<i class="fa fa-trash" @click="deleteTask()"></i>
 		<error v-if="errMsg" :errMsg="errMsg"/>
 	</div>
@@ -29,7 +29,7 @@ export default{
 				if(response.data.status == 'true'){
 					this.errMsg = null;
 				}else{
-					this.errMsg = response.data.errors.isCompleted[0];
+					// this.errMsg = response.data.errors.isCompleted[0];
 				}
 			})
 			.catch( error => {

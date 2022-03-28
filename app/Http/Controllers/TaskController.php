@@ -23,9 +23,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = UserHasTask::with(['task' => function ($q) {
-            return $q->get();
-        }])->where('user_id',Auth::id())->orderBy('created_at', 'DESC')->get();
+        // $tasks = UserHasTask::with(['task'])->where('user_id',Auth::id())->orderBy('created_at', 'DESC')->get();
+        $tasks = Task::orderBy('created_at', 'DESC')->get();
 
         $response = [
             'status' => 'true',
@@ -115,17 +114,24 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $UserhasTask = UserHasTask::find($id);
-        $UserhasTask->task()->delete();
-        $UserhasTask->delete();
+        // $UserhasTask = UserHasTask::find($id);
+        // $UserhasTask->task()->delete();
+        // $UserhasTask->delete();
+        $deleteTask = Task::where('id', $id)->delete();
 
-        $response = [
-            'status' => 'true',
-            'data' => [],
-            'errors' => [],
-        ];
-
-
+        if (!$deleteTask) {
+            $response = [
+                'status' => 'false',
+                'data' => [],
+                'errors' => [],
+            ];
+        } else {
+            $response = [
+                'status' => 'true',
+                'data' => [],
+                'errors' => [],
+            ];
+        }
         return response()->json($response);
     }
 }

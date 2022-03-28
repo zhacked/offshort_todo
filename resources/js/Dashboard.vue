@@ -39,7 +39,6 @@ export default{
 					if(response.data.data.length > 0){
                      console.log(response.data.data);
 						this.tasks = response.data.data;
-
 						this.noTasks = false;
 						this.errMsg = null;
 					}else{

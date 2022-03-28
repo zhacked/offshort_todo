@@ -25,18 +25,17 @@ export default{
 	methods:{
 		addTask(){
 		 	if(this.title){
-
-
+                 var self = this;
 				axios.post('api/tasks', {
 					"title": this.title
 				})
 				.then( function(response){
 					if(response.data.status == 'true'){
-						this.$emit('taskAdded');
-						this.title = null;
-						this.errMsg = null;
+						self.$emit('taskAdded');
+						self.title = null;
+						self.errMsg = null;
 					}else{
-						this.errMsg = response.data.errors.title[0];
+						self.errMsg = response.data.errors.title[0];
 					}
 				})
 				.catch( function(error){
