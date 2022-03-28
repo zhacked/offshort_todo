@@ -1,7 +1,7 @@
 
 
 ## Installation procedure
-1) git clone 
+1) git clone https://github.com/zhacked/offshort_todo.git
 2) cp .env.example .env
 3) set up .env and database
 4) npm install
