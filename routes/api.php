@@ -25,6 +25,7 @@ Route::put('profile', [App\Http\Controllers\API\UserController::class, 'updatePr
 Route::get('findUser', [App\Http\Controllers\API\UserController::class, 'search']);
 
 Route::apiResources(['tasks' => App\Http\Controllers\TaskController::class]);
+Route::put('MarkAsDone/{id}', [App\Http\Controllers\TaskController::class, 'markAsDone']);
 
 
 

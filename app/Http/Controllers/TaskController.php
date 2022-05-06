@@ -82,6 +82,21 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $update = Task::findOrFail($id);
+        $this->validate($request,[
+            'title' => 'required|string|max:191',
+        ]);
+        $update->update($request->all());
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Task  $task
+     * @return \Illuminate\Http\Response
+     */
+    public function markAsDone(request $request, $id){
         $validated = Validator::make($request->only('isCompleted'), [
             'isCompleted' => 'required|boolean'
         ]);

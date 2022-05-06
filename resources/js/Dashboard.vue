@@ -76,12 +76,8 @@ body{
 
 .container{
 	position: relative;
-	width: 50%;
-	margin: 200px auto 90px auto;
-	padding: 50px 20px 50px 20px;
 	padding-top: 50px;
 	border-radius: 10px;
-	border: 1px solid #fff;
 }
 
 .todo-container{
