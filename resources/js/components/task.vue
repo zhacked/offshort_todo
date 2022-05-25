@@ -39,10 +39,17 @@ export default{
             this.editmode = true;
         },
         update(){
-            axios.put('api/tasks/' + this.task.id, {
-				title: this.task.title
-			}).then()
-            this.editmode = false;
+                axios.put('api/tasks/' + this.task.id, {
+                    title: this.task.title
+                }).then(() => {
+                    swal.fire(
+                        'Updated!',
+                        'Information has been updated.',
+                        'success'
+                        )
+                    Fire.$emit('AfterCreate');
+                })
+                this.editmode = false;
         },
 		markAsDone(){
 			axios.put('api/MarkAsDone/' + this.task.id, {
@@ -60,19 +67,36 @@ export default{
 			});
 		},
 		deleteTask(){
-
-			axios.delete('api/tasks/' + this.task.id)
-			.then( response => {
-				if(response.data.status == 'true'){
-					this.$emit('taskDeleted');
-					this.errMsg = null;
-				}else{
-					this.errMsg = "Task not found";
-				}
-			})
-			.catch( error => {
-				this.errMsg = "Error deleting task";
-			});
+            swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                   if (result.value){
+                        axios.delete('api/tasks/' + this.task.id)
+                            .then( response => {
+                                if(response.data.status == 'true'){
+                                    this.$emit('taskDeleted');
+                                    this.errMsg = null;
+                                }else{
+                                    this.errMsg = "Task not found";
+                                }
+                                swal.fire(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                        )
+                                Fire.$emit('AfterCreate');
+                            })
+                    .catch( error => {
+                            this.errMsg = "Error deleting task";
+                        });
+                    }
+                })
 		}
 	}
 }

@@ -15,9 +15,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-
         $this->middleware('auth:api');
-
     }
 
     /**
@@ -27,7 +25,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
         return User::latest()->paginate(1);
     }
 

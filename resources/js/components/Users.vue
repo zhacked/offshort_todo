@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <strong> User Management</strong>
                         <div class="card-tools">
-                            <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                            <button class="btn btn-success" @click="newModal">Add New User <i class="fas fa-user-plus fa-fw"></i></button>
                         </div>
                     </div>
 
@@ -19,6 +19,7 @@
                                     <th>Email</th>
                                     <th>Type</th>
                                     <th>Modify</th>
+                                    <th class="mid">ACTION</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -32,7 +33,7 @@
 									<td>{{user.type | upText}}</td>
 									<td>{{user.created_at | myDate}}</td>
 
-									<td>
+									<td class="mid">
 										<button class="btn btn-primary"  @click="editModal(user)">
 											<i class="fa fa-edit"></i> Update
 										</button>
@@ -202,7 +203,9 @@
             loadUsers(){
                 if(this.$gate.isAdmin()){
                     axios.get("api/user").then(({ data }) => (this.users = data));
+
                 }
+
             },
             createUser(){
                 this.$Progress.start();
@@ -237,3 +240,9 @@
         }
     }
 </script>
+<style scoped>
+    .mid{
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>

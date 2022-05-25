@@ -26,6 +26,15 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'updated_at' => new DateTime(),
             ],
+            [
+                'name' => 'user',
+                'email' => 'user@gmail.com',
+                'type' => 'user',
+                'bio' =>'administrator',
+                'photo' => null,
+                'password' => Hash::make('password'),
+                'updated_at' => new DateTime(),
+            ]
         ]);
     }
 }

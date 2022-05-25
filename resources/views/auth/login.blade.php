@@ -1,18 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="custom-layout__login container-fluid">
+    <div class="custom-layout__login container-fluid"
+    style="
+        background: url(image/bg.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    ">
         <div class="container">
-            <div class="d-flex justify-content-center align-items-center flex-column">
-
-                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4 card"
+            <div class="d-flex justify-content-center flex-column" style="margin-left:-165px; margin-top:-100px">
+                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4"
                     style="max-width: 90%; width: 600px">
 
                     <div class="card-body container-fluid px-5 py-3">
-                        <h1 class="text-center text-white custom-welcome">Todo List</h1>
+                        <div style="margin-left:60px; margin-bottom:100px;">
+                            <img src="image/logo.svg" alt="todo logo">
+                            <div class="todo-container1">
+                                <div class="todo">Todo<span class="do font-border">List</span></div>
+                            </div>
+                        </div>
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="mb-3">
+                            <div class="mb-5">
                                 <label for="email"
                                     class="form-label  custom-input__label">{{ __('E-Mail Address') }}</label>
                                 <div class="d-flex flex-column">
@@ -27,23 +38,22 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-5">
                                 <label for="password" class="form-label custom-input__label">{{ __('Password') }}</label>
 
                                 <input id="password" type="password"
                                     class="form-control custom-input @error('password') is-invalid @enderror"
                                     name="password" required autocomplete="current-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
+                                <br>
                             </div>
 
-                            <div class="d-grid col-6 mx-auto">
-                                <button class="btn btn-block btn-primary mt-4 py-3 text-uppercase custom-button "
+                            <div class="d-grid col-14 mx-auto" style="margin-top:50px;">
+                                <button class="btn btn-block btn-primary py-3 text-uppercase font-weight-bold custom-button custom-button1"
                                     type="submit">
                                     {{ __('Sign in') }}</button>
                             </div>

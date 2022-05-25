@@ -19,21 +19,21 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 			<li class="nav-item" >
 				<router-link to="/task" class="nav-link">
-                    <i class="nav-icon fas fa-clipboard-list purple"></i>
-					<p>Todo</p>
+                    <i class="nav-icon fas fa-clipboard-list teal"></i>
+					<p>Todo-List</p>
 				</router-link>
 			</li>
-			<li class="nav-item">
-				<router-link to="/profile" class="nav-link ">
-					<i class="nav-icon fas fa-user green"></i>
-					<p>Profile</p>
+            <li class="nav-item" >
+				<router-link to="/time" class="nav-link">
+                    <i class="nav-icon fas fa-clock teal"></i>
+					<p>Time Monitoring</p>
 				</router-link>
 			</li>
 
             @can('isAdmin')
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-cog"></i>
+                    <i class="nav-icon fas fa-cog teal"></i>
                     <p>
                         Management
                         <i class="right fas fa-angle-left"></i>
@@ -43,10 +43,17 @@
                         <li class="nav-item">
                             <router-link to="/users" class="nav-link active">
                                 <i class="fa fa-users-cog nav-icon"></i>
-                                <p>user</p>
+                                <p>User</p>
                             </router-link>
                         </li>
-
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <router-link to="/techemployee" class="nav-link active">
+                                <i class="fa fa-users-cog nav-icon"></i>
+                                <p>Tech Employee</p>
+                            </router-link>
+                        </li>
                     </ul>
                 </li>
             @endcan

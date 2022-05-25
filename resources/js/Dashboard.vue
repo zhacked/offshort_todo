@@ -4,6 +4,7 @@
 			<div class="todo-container">
 				<div class="todo">Todo<span class="do">List</span></div>
 			</div>
+            <br><br>
 			<add-task @taskAdded="getTasks()"/>
 			<task v-for="(task, key) in tasks" :key="key" :task="task" :errMsg="errMsg" @taskDeleted="getTasks()"/>
 			<error v-if="errMsg" :errMsg="errMsg"/>
@@ -35,6 +36,7 @@ export default{
 		getTasks(){
 			axios.get('api/tasks')
 			.then( response => {
+                console.log(response);
 				if(response.data.status == 'true'){
 					if(response.data.data.length > 0){
                      console.log(response.data.data);
