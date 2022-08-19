@@ -49,7 +49,7 @@
 }
 
 .custom-button {
-    background-image: linear-gradient(to right, #134E5E , #71B280);
+    background-color: #333333;
     border: none;
     letter-spacing: 0.5em;
     font-size: 1em;
@@ -190,13 +190,13 @@
     outline: none;
     text-align: center;
     height: 50px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid #333333;
     border-radius: 6px;
     margin-bottom: 10px;
 }
 
 .searchField:focus{
-    border:1px solid #F9C801;
+    border:1px solid #333333;
     border-radius: 6px;
 }
 
@@ -205,7 +205,7 @@
     width: 200px;
     border-radius: 6px;
     border:none;
-    background-color: #F9C801;
+    background-color: #333333;
     font-size: 20px;
     color:white;
     text-align: left;
@@ -216,7 +216,7 @@
     width: 100px;
     border-radius: 6px;
     border:none;
-    background-color: #F9C801;
+    background-color: #333333;
     font-size: 20px;
     color:white;
     text-align: center;
@@ -239,7 +239,7 @@
 .ha2 {
     display: inline-block;
     border-radius: 7px 0px 0px 7px;
-    background-color: #F9C801;
+    background-color: #333333;
     padding: 9px 15px 16px;
     margin-right:-7px;
     color: white;
@@ -267,7 +267,7 @@
 .modalFa {
     display: inline-block;
     border-radius: 100px 100px 100px 100px;
-    background-color: #F9C801;
+    background-color: #333333;
     padding: 11px;
     color: white;
     font-size: 21px;

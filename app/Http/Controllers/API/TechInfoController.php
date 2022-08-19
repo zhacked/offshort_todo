@@ -105,7 +105,6 @@ class TechInfoController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('isAdmin');
         $tech = Techinfo::findOrFail($id);
         // delete the user
         $tech->delete();

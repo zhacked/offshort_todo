@@ -71,9 +71,6 @@ let routes = [
         path: '/task', component: require('./Dashboard.vue').default
     },
     {
-        path: '/time', component: require('./components/TimeMonitoring.vue').default
-    },
-    {
         path: '/users', component: require('./components/Users.vue').default
     },
     {

@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 //user
 
 Route::apiResources(['user' => App\Http\Controllers\API\UserController::class]);

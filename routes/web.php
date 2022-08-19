@@ -35,6 +35,9 @@ Route::get('/', function () {
     return view('layouts.monitoring',['data1' => $data1, 'data2' => $data2]);
 });
 
+Auth::routes();
+
+
 Route::post("timeStamp", [App\Http\Controllers\API\TechTimeController::class, 'timeStamp'])->name('timeStamp');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get("search", [App\Http\Controllers\API\TechInfoController::class, 'search']);

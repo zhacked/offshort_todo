@@ -8,28 +8,22 @@
         background-position: center;
         background-size: cover;
     ">
-        <div class="container">
-            <div class="d-flex justify-content-center flex-column" style="margin-left:-165px; margin-top:-100px">
-                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4"
-                    style="max-width: 90%; width: 600px">
+        <div class="container" style="width:100%; height:100%; margin-left:50%;">
+            <div class="d-flex justify-content-center" style="margin-top:15%;">
+                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4 mt-5"
+                    style="max-width: 100%; width: 600px;">
 
-                    <div class="card-body container-fluid px-5 py-3">
-                        <div style="margin-left:60px; margin-bottom:100px;">
-                            <img src="image/logo.svg" alt="todo logo">
-                            <div class="todo-container1">
-                                <div class="todo">Todo<span class="do font-border">List</span></div>
-                            </div>
-                        </div>
-
-                        <form method="POST" action="{{ route('login') }}">
+                    <div class="card-body container-fluid px-14 py-3">
+                        <h1 style="font-weight:bold;">Admin Login</h1></br></br>
+                        <form method="POST" action="{{ route('login') }}" autocomplete="off">
                             @csrf
                             <div class="mb-5">
                                 <label for="email"
-                                    class="form-label  custom-input__label">{{ __('E-Mail Address') }}</label>
+                                    class="form-label  custom-input__label" style="color:#666666;">{{ __('Email Address') }}</label>
                                 <div class="d-flex flex-column">
                                     <input id="email" type="email"
                                         class="form-control custom-input @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        value="{{ old('email') }}" required autocomplete="off" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -39,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="form-floating mb-5">
-                                <label for="password" class="form-label custom-input__label">{{ __('Password') }}</label>
+                                <label for="password" class="form-label custom-input__label" style="color:#666666;">{{ __('Password') }}</label>
 
                                 <input id="password" type="password"
                                     class="form-control custom-input @error('password') is-invalid @enderror"
@@ -53,9 +47,10 @@
                             </div>
 
                             <div class="d-grid col-14 mx-auto" style="margin-top:50px;">
-                                <button class="btn btn-block btn-primary py-3 text-uppercase font-weight-bold custom-button custom-button1"
+                                <button class="btn btn-block btn-primary py-3 text-uppercase font-weight-bold custom-button"
                                     type="submit">
-                                    {{ __('Sign in') }}</button>
+                                    {{ __('Sign in') }}</button></br>
+                                View Breaktime Monitoring? <a href="{{ url('/') }}">Click here</a>
                             </div>
                         </form>
                     </div>

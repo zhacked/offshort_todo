@@ -150,9 +150,7 @@ class TechTimeController extends Controller
                         }
 
                     }else{
-                        echo '<script type="text/javascript">';
-                        echo 'alert("review your answer")';
-                        echo '</script>';
+                        return redirect('/');
                     }
                 }
             break;
@@ -213,9 +211,7 @@ class TechTimeController extends Controller
                         }
 
                     }else{
-                        echo '<script type="text/javascript">';
-                        echo 'alert("review your answer")';
-                        echo '</script>';
+                        return redirect('/');
                     }
                 }
             break;

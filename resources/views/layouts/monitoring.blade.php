@@ -11,7 +11,7 @@
     <div class="content-handler">
         <!-- header -->
         <div class="content-header">
-            <img src="image/tech.png" style="width:120px; height:120px;">
+            <a href="{{ route('login') }}"><img src="image/tech.png" style="width:120px; height:120px;"></a>
             <font class="custom-text">TECHNICAL BREAKTIME MONITORING</font>
         </div>
         <!-- Digital clock -->
@@ -115,7 +115,7 @@
                     <form autocomplete="off" action="{{ route('timeStamp') }}" method="post">
                         @csrf
                         <div class="center p-2">
-                            <input type="text" name="search" id="search" class="searchField" placeholder="Search your Employee ID" />
+                            <input type="text" name="search" id="search" class="searchField" placeholder="Search your Employee ID" required/>
                         </div>
                         <div class="modal-body center">
                         <div id="techList"></div>
