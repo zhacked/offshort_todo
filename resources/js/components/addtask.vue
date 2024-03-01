@@ -1,7 +1,7 @@
 <template>
 	<div class="add-task">
-		<input type="text" class="task-title" placeholder="Task Title" v-model="title"/>
-		<button class="add-button" @click="addTask()">
+		<input type="text" class="task-title" placeholder="Task Title" v-model="title" />
+		<button class="add-button" @click="addTask()" v-on:keyup.enter="addtask()">
 			<i class="fa fa-plus"></i>
 			Add Task Here
 		</button>

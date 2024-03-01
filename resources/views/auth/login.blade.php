@@ -1,24 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="custom-layout__login container-fluid">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center flex-column">
+    <div class="custom-layout__login container-fluid"
+    style="
+        background: url(image/bg.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    ">
+        <div class="container" style="width:100%; height:100%; margin-left:50%;">
+            <div class="d-flex justify-content-center" style="margin-top:15%;">
+                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4 mt-5"
+                    style="max-width: 100%; width: 600px;">
 
-                <div class="custom-card__glass d-flex justify-content-center align-items-center p-4 card"
-                    style="max-width: 90%; width: 600px">
-
-                    <div class="card-body container-fluid px-5 py-3">
-                        <h1 class="text-center text-white custom-welcome">Todo List</h1>
-                        <form method="POST" action="{{ route('login') }}">
+                    <div class="card-body container-fluid px-14 py-3">
+                        <h1 style="font-weight:bold;">Admin Login</h1></br></br>
+                        <form method="POST" action="{{ route('login') }}" autocomplete="off">
                             @csrf
-                            <div class="mb-3">
+                            <div class="mb-5">
                                 <label for="email"
-                                    class="form-label  custom-input__label">{{ __('E-Mail Address') }}</label>
+                                    class="form-label  custom-input__label" style="color:#666666;">{{ __('Email Address') }}</label>
                                 <div class="d-flex flex-column">
                                     <input id="email" type="email"
                                         class="form-control custom-input @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        value="{{ old('email') }}" required autocomplete="off" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -27,25 +32,25 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <label for="password" class="form-label custom-input__label">{{ __('Password') }}</label>
+                            <div class="form-floating mb-5">
+                                <label for="password" class="form-label custom-input__label" style="color:#666666;">{{ __('Password') }}</label>
 
                                 <input id="password" type="password"
                                     class="form-control custom-input @error('password') is-invalid @enderror"
                                     name="password" required autocomplete="current-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
+                                <br>
                             </div>
 
-                            <div class="d-grid col-6 mx-auto">
-                                <button class="btn btn-block btn-primary mt-4 py-3 text-uppercase custom-button "
+                            <div class="d-grid col-14 mx-auto" style="margin-top:50px;">
+                                <button class="btn btn-block btn-primary py-3 text-uppercase font-weight-bold custom-button"
                                     type="submit">
-                                    {{ __('Sign in') }}</button>
+                                    {{ __('Sign in') }}</button></br>
+                                View Breaktime Monitoring? <a href="{{ url('/') }}">Click here</a>
                             </div>
                         </form>
                     </div>

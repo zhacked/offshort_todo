@@ -24,7 +24,7 @@ class TaskController extends Controller
     public function index()
     {
         // $tasks = UserHasTask::with(['task'])->where('user_id',Auth::id())->orderBy('created_at', 'DESC')->get();
-        $tasks = Task::orderBy('created_at', 'DESC')->get();
+        $tasks = Task::orderBy('created_at', 'ASC')->get();
 
         $response = [
             'status' => 'true',
