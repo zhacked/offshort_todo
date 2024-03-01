@@ -13,15 +13,15 @@ class CreateTechtimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('techtimes', function (Blueprint $table) {
+        Schema::create('break_time', function (Blueprint $table) {
             $table->id();
-            $table->string('techID');
-            $table->string('timeIn');
-            $table->string('timeOut');
+            $table->string('employee_id');
+            $table->string('time_in');
+            $table->string('time_out');
             $table->string('duration');
             $table->string('type');
             $table->string('status');
-            $table->date('techDate');
+            $table->date('break_date');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateTechtimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('techtimes');
+        Schema::dropIfExists('break_time');
     }
 }

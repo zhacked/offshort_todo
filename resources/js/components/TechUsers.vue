@@ -21,21 +21,22 @@
 								</tr>
 							</thead>
 							<tbody>
-                                <tr v-if="techinfos.data.length == 0">
+                                <tr v-if="users.data.length == 0">
                                     <td colspan="7" class="text-center"> <h3>No Data Available</h3> </td>
                                 </tr>
-								<tr v-else v-for="techinfo in techinfos.data" :key="techinfo.id">
-									<td>{{techinfo.id}}</td>
-									<td>{{techinfo.techFname}} {{techinfo.techLname}}</td>
-									<td>{{techinfo.techShift | upText}}</td>
+								<tr v-else v-for="user in users.data" :key="user.id">
+									<td>{{user.id}}</td>
+									<td>{{user.name}}</td>
+									<td>{{user.email}}</td>
+									<td>{{user.type | upText}}</td>
+									<td>{{user.created_at | myDate}}</td>
+
 									<td class="mid">
-										<button class="btn btn-primary"  @click="editModal(techinfo)">
+										<button class="btn btn-primary"  @click="editModal(user)">
 											<i class="fa fa-edit"></i> Update
 										</button>
-                                        <button class="btn btn-primary" @click="viewUserRecord(techinfo.id)">
-											<i class="fa fa-eye"></i> View Time Record
-										</button>
-										<button class="btn btn-danger"  @click="deleteUser(techinfo.id)">
+
+											<button class="btn btn-danger"  @click="deleteUser(user.id)">
 											<i class="fa fa-trash"></i> Delete
 										</button>
 									</td>
@@ -114,14 +115,13 @@
 </template>
 
 <script>
-import Dashboard from '../Dashboard.vue';
-    export default {
+export default {
   components: { Dashboard },
         data() {
             return {
                 show: false,
                 editmode: false,
-                techinfos : {},
+                users : {},
                 length: '',
                 form: new Form({
                     id:'',
@@ -133,9 +133,9 @@ import Dashboard from '../Dashboard.vue';
         },
         methods: {
             getResults(page) {
-                    axios.get('api/techemployee?page=' + page)
+                    axios.get('api/user?page=' + page)
                         .then(response => {
-                            this.techinfos = response.data;
+                            this.users = response.data;
                         });
                 },
             updateUser(){

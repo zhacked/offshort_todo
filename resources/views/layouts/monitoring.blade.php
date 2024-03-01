@@ -27,7 +27,7 @@
         <!-- Table for 15mins and 30mins break -->
         <div class="tbl-handler">
 
-            <div id="smoke" class="tableFixHead">
+            <!-- <div id="smoke" class="tableFixHead">
                 <table>
                     <thead class="border">
                         <tr>
@@ -63,7 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             <div id="meal" class="tableFixHead">
                 <table>
                     <thead class="border">
@@ -72,8 +72,8 @@
                         </tr>
                         <tr>
                             <td>NAME</td>
-                            <td>TIME IN</td>
-                            <td>TIME OUT</td>
+                            <td>BREAK START</td>
+                            <td>BREAK END</td>
                             <td>DURATION</td>
                             <td>STATUS</td>
                         </tr>
@@ -123,7 +123,7 @@
                         <div class="modal-footer center">
                             <input type="hidden" name="timeNow" id="timeNow" />
                             <input type="hidden" name="dateNow" id="dateNow" />
-                            <button type="submit" name="action" value="short" class="modalBtn">15 Minutes Break</button>
+                            <!-- <button type="submit" name="action" value="short" class="modalBtn">15 Minutes Break</button> -->
                             <button type="submit" name="action" value="long" class="modalBtn">30 Minutes Break</button>
                         </div>
                     </form>

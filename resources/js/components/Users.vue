@@ -18,7 +18,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Type</th>
-                                    <th>Modify</th>
+                                    <th>Updated Last</th>
                                     <th class="mid">ACTION</th>
 								</tr>
 							</thead>
@@ -102,7 +102,7 @@
 						</div>
 
 						<div class="form-group">
-							<input v-model="form.password" type="password" name="password" id="password"
+							<input v-model="form.password" type="text" name="password" id="password"
 							class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
 							<has-error :form="form" field="password"></has-error>
 						</div>

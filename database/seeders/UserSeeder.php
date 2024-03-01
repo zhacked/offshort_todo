@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use DateTime;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -21,18 +22,20 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'type' => 'admin',
-                'bio' =>'administrator',
+                'bio' => 'administrator',
                 'photo' => null,
                 'password' => Hash::make('password'),
+                'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
                 'name' => 'user',
                 'email' => 'user@gmail.com',
                 'type' => 'user',
-                'bio' =>'administrator',
+                'bio' => 'administrator',
                 'photo' => null,
                 'password' => Hash::make('password'),
+                'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
         ]);

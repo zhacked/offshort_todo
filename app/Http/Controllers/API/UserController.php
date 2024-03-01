@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(1);
+        return User::latest()->paginate(5);
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6'
@@ -58,9 +58,9 @@ class UserController extends Controller
         $user = auth('api')->user();
 
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|string|max:191',
-            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+            'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
             'password' => 'sometimes|required|min:6'
         ]);
 
@@ -68,21 +68,21 @@ class UserController extends Controller
         $currentPhoto = $user->photo;
 
 
-        if($request->photo != $currentPhoto){
-            $name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
+        if ($request->photo != $currentPhoto) {
+            $name = time() . '.' . explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
 
-            Image::make($request->photo)->save(public_path('image/profile/').$name);
+            Image::make($request->photo)->save(public_path('image/profile/') . $name);
             $request->merge(['photo' => $name]);
 
-            $userPhoto = public_path('image/profile/').$currentPhoto;
-            if(file_exists($userPhoto)){
+            $userPhoto = public_path('image/profile/') . $currentPhoto;
+            if (file_exists($userPhoto)) {
                 @unlink($userPhoto);
             }
 
         }
 
 
-        if(!empty($request->password)){
+        if (!empty($request->password)) {
             $request->merge(['password' => Hash::make($request['password'])]);
         }
 
@@ -118,9 +118,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|string|max:191',
-            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+            'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
             'password' => 'sometimes|min:6'
         ]);
 
@@ -146,14 +146,15 @@ class UserController extends Controller
         return ['message' => 'User Deleted'];
     }
 
-    public function search(){
+    public function search()
+    {
 
         if ($search = \Request::get('q')) {
-            $users = User::where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%")
-                        ->orWhere('email','LIKE',"%$search%");
+            $users = User::where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
             })->paginate(20);
-        }else{
+        } else {
             $users = User::latest()->paginate(5);
         }
 

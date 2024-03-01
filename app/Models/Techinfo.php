@@ -9,5 +9,9 @@ class Techinfo extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'shift',
+    ];
 }

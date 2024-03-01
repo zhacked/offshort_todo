@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Techinfo;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Techinfo;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -18,19 +19,8 @@ class TechInfoController extends Controller
      */
     public function index()
     {
-        return Techinfo::orderBy('id', 'ASC')->paginate();
-        // $data = Techinfo::orderBy('id', 'ASC')->paginate();
-        // return view('layouts.monitoring',['data' => $data]);
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return User::latest()->paginate(5);
     }
 
     /**
@@ -41,17 +31,22 @@ class TechInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'techFname' => 'required|string|max:191',
             'techLname' => 'required|string|max:191',
             'techShift' => 'required|string|max:191'
         ]);
 
-        return Techinfo::create([
+        Techinfo::create([
             'techFname' => $request['techFname'],
             'techLname' => $request['techLname'],
             'techShift' => $request['techShift'],
         ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Employee details added succesfully!'
+        ], 401);
     }
 
     /**
@@ -87,7 +82,7 @@ class TechInfoController extends Controller
     {
         $tech = Techinfo::findOrFail($id);
 
-        $this->validate($request,[
+        $this->validate($request, [
             'techFname' => 'required|string|max:191',
             'techLname' => 'required|string|max:191',
             'techShift' => 'required|string|max:191'
@@ -112,13 +107,14 @@ class TechInfoController extends Controller
         return ['message' => 'User Deleted'];
     }
 
-    public function search(Request $request){
-        if($request->ajax()){
-            $data=Techinfo::whereIn('id',[$request->search])->get();
-            $output='';
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Techinfo::whereIn('id', [$request->search])->get();
+            $output = '';
 
-            if(count($data)>0){
-                $output ='
+            if (count($data) > 0) {
+                $output = '
                    <table style="width:450px">
                    <thead class="border">
                         <tr>
@@ -131,23 +127,22 @@ class TechInfoController extends Controller
                         </tr>
                     </thead>
                    <tbody>';
-                       foreach($data as $row){
-                           $output .='
+                foreach ($data as $row) {
+                    $output .= '
                            <tr>
-                                <td>'.$row->id.'</td>
-                                <td>'.$row->techFname.' '.$row->techLname.'</td>
-                                <td>'.$row->techShift.'</td>
+                                <td>' . $row->id . '</td>
+                                <td>' . $row->techFname . ' ' . $row->techLname . '</td>
+                                <td>' . $row->techShift . '</td>
                            </tr>
                            ';
-                       }
+                }
 
                 $output .= '
 
                     </tbody>
                    </table>';
-           }
-           else{
-                $output .='No results';
+            } else {
+                $output .= 'No results';
             }
             return $output;
         }

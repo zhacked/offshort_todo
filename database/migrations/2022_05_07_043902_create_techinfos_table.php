@@ -13,11 +13,11 @@ class CreateTechinfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('techinfos', function (Blueprint $table) {
+        Schema::create('employee_info', function (Blueprint $table) {
             $table->id('id');
-            $table->string('techFname');
-            $table->string('techLname');
-            $table->string('techShift');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('shift');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTechinfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('techinfos');
+        Schema::dropIfExists('employee_info');
     }
 }
